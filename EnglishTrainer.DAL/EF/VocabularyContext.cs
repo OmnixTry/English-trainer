@@ -11,7 +11,7 @@ namespace EnglishTrainer.DAL.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Word> Words { get; set; }
         public DbSet<Topic> Topics { get; set; }
-        public DbSet<Mistake> Mistakee { get; set; }
+        public DbSet<Mistake> Mistakes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

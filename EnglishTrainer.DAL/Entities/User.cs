@@ -10,5 +10,11 @@ namespace EnglishTrainer.DAL.Entities
         // not null unique
         public string NickName { get; set; }
         public ICollection<Mistake> Mistakes { get; set; }
+        public ICollection<Topic> Topics { get; set; }
+        public User()
+        {
+            Mistakes = new List<Mistake>();
+            Topics = new List<Topic>();
+        }
     }
 }

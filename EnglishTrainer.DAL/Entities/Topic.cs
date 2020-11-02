@@ -10,6 +10,7 @@ namespace EnglishTrainer.DAL.Entities
         public string Name { get; set; }
         public DateTime LastPlayed { get; set; }
         public ICollection<Word> Words { get; set; }
+        public User User { get; set; }
 
         public Topic()
         {
