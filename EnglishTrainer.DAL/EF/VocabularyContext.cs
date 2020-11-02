@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EnglishTrainer.DAL.EF
 {
-    class VocabularyContext : DbContext
+    public class VocabularyContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Word> Words { get; set; }

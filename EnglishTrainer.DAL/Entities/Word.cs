@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EnglishTrainer.DAL.Entities
 {
-    class Word
+    public class Word
     {
         public int Id { get; set; }
         public string EnglshTranslation { get; set; }

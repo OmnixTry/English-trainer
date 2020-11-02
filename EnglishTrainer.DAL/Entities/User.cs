@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EnglishTrainer.DAL.Entities
 {
-    class User
+    public class User
     {
         public int Id { get; set; }
         // not null unique
