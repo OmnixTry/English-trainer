@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.DataTransferObjects;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +17,10 @@ namespace BLL.BusinessModels.WordChecking
 
         public override bool Check(string answer)
         {
-            return answer == _word.UkrainianTranslation;
+            return String.Compare(answer, _word.UkrainianTranslation, true) == 0;
         }
+
+        public EnglishToUkrainianWord(WordDTO word)
+            : base(word) { }
     }
 }

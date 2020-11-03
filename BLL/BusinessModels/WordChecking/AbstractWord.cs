@@ -13,5 +13,10 @@ namespace BLL.BusinessModels.WordChecking
         public abstract string Question { get; }
 
         public abstract bool Check(string answer);
+
+        public AbstractWord(WordDTO word)
+        {
+            _word = word;
+        }
     }
 }

@@ -13,7 +13,12 @@ namespace BLL.Interfaces
         /// <summary>
         /// Returns list of questions to answer
         /// </summary>
-        ReadOnlyCollection<string> Questions { get; }
+        IEnumerable<string> Questions { get; }
+
+        /// <summary>
+        /// The name of the Exercise    
+        /// </summary>
+        string Title { get; }
         /// <summary>
         /// Checks all the questions in an exerxise in order.
         /// </summary>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BLL.DataTransferObjects
 {
-    class WordDTO
+    public class WordDTO
     {
         public int Id { get; set; }
         public string EnglshTranslation { get; set; }
