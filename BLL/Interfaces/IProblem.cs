@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.DataTransferObjects;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,5 +21,11 @@ namespace BLL.Interfaces
         /// <param name="answer">the pruposed answer to the problem to check.</param>
         /// <returns>True if the answer is correct</returns>
         bool Check(string answer);
+
+        /// <summary>
+        /// Converts problem object to the equivalent ProblemDTO
+        /// </summary>
+        /// <returns>ProblemDTO with Question field filled and answer field null</returns>
+        ProblemDTO ToProblemDTO();
     }
 }

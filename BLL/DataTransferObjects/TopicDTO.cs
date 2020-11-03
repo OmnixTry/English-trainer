@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BLL.DataTransferObjects
 {
-    class TopicDTO
+    public class TopicDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
