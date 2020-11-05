@@ -6,5 +6,6 @@ namespace BLL.DataTransferObjects
 {
     public class ExerciseDTO
     {
+        public List<ProblemDTO> Problems { get; set; }
     }
 }

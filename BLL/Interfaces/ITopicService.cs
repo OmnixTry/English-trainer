@@ -10,7 +10,7 @@ namespace BLL.Interfaces
     {
         IEnumerable<TopicDTO> GetTopics();
 
-        Topi
+        //Topi
 
     }
 }

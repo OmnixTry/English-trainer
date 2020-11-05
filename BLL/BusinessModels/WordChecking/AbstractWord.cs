@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BLL.BusinessModels.WordChecking
 {
-    public abstract class AbstractWord : IProblem
+    private abstract class AbstractWord : IProblem
     {
         protected WordDTO _word;
 
