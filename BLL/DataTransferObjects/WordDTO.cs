@@ -7,12 +7,12 @@ namespace BLL.DataTransferObjects
     public class WordDTO
     {
         public int Id { get; set; }
-        public EnglishWord Englsh { get; set; }
-        public UkrainianWord Ukrainian{ get; set; }
+        public EnglishWordDTO Englsh { get; set; }
+        public UkrainianWordDTO Ukrainian{ get; set; }
         public TopicDTO Topic { get; set; }
         public ICollection<MistakeDTO> Mistakes { get; set; }
 
-        public WordDTO(EnglishWord english, UkrainianWord ukrainian)
+        public WordDTO(EnglishWordDTO english, UkrainianWordDTO ukrainian)
         {
             if (english == null)
                 throw new ArgumentNullException("english");

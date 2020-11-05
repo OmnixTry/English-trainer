@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BLL.DataTransferObjects
 {
-    public class EnglishWord : ILanguageWord
+    public class EnglishWordDTO : ILanguageWord
     {
         public int WordId { get; }
         public string EnglishText { get; set; }
