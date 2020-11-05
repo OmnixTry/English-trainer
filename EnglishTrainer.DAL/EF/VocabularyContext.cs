@@ -12,7 +12,7 @@ namespace EnglishTrainer.DAL.EF
         public DbSet<Word> Words { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Mistake> Mistakes { get; set; }
-
+        public DbSet<TopicResult> TopicResults { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasAlternateKey(u => u.NickName);

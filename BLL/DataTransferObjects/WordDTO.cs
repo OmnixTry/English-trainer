@@ -7,20 +7,21 @@ namespace BLL.DataTransferObjects
     public class WordDTO
     {
         public int Id { get; set; }
-        public EnglishWordDTO Englsh { get; set; }
-        public UkrainianWordDTO Ukrainian{ get; set; }
+        public string Englsh { get; set; }
+        public string Ukrainian{ get; set; }
         public TopicDTO Topic { get; set; }
         public ICollection<MistakeDTO> Mistakes { get; set; }
 
-        public WordDTO(EnglishWordDTO english, UkrainianWordDTO ukrainian)
+        public WordDTO(TopicDTO topic, string english, string ukrainian)
         {
             if (english == null)
                 throw new ArgumentNullException("english");
             if (ukrainian == null)
                 throw new ArgumentNullException("ukrainian");
-            if (english.WordId != ukrainian.WordId)
-                throw new ArgumentException("Inconsistency in word ID's");
+            if (topic == null)
+                throw new ArgumentNullException("topic");
 
+            Topic = topic;
             Englsh = english;
             Ukrainian = ukrainian;
         }

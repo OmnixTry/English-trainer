@@ -7,20 +7,8 @@ using System.Text;
 
 namespace BLL.AbstractClasses
 {
-    abstract class AbstractWord : IProblemDTO
+    abstract class AbstractWord : ILanguageWord
     {
-        public string Question { get; }
-
-        public string PruposedAnswer { get; set; }
-
-        string IProblemDTO.CorrectAnswer { get; }
-
-        public AbstractWord(string question, string answer)
-        {
-            Question = question;
-            CorrectAnswer
-
-
-        }
+        public int WordId { get; }
     }
 }

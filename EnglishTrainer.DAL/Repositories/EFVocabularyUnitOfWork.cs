@@ -14,6 +14,7 @@ namespace EnglishTrainer.DAL.Repositories
         private TopicRepository topicRepository;
         private UserRepository userRepository;
         private MistakeRepository mistakeRepository;
+        private TopicResultRepository topicResultRepository;
         public IRepository<Word> Words
         {
             get
@@ -54,6 +55,16 @@ namespace EnglishTrainer.DAL.Repositories
             }
         }
 
+        public IRepository<TopicResult> TopicResults 
+        {
+            get
+            {
+                if (topicResultRepository == null)
+                    topicResultRepository= new TopicResultRepository(db);
+                return topicResultRepository;
+            }
+        }
+
         private bool disposed = false;
 
         public virtual void Dispose(bool disposing)
@@ -72,6 +83,11 @@ namespace EnglishTrainer.DAL.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
         }
     }
 }
