@@ -8,8 +8,4 @@
     <ProjectReference Include="..\EnglishTrainer.DAL\EnglishTrainer.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BusinessModels\WordChecking\" />
-  </ItemGroup>
-
 </Project>

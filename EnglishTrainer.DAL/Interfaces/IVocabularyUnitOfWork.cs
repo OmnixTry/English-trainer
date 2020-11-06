@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EnglishTrainer.DAL.Interfaces
 {
-    interface IVocabularyUnitOfWork : IDisposable
+    public interface IVocabularyUnitOfWork : IDisposable
     {
         IRepository<Word> Words { get; }
         IRepository<Topic> Topics { get; }

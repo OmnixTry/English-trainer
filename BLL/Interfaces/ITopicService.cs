@@ -1,16 +1,13 @@
-﻿using BLL.BusinessModels.WordChecking;
-using BLL.DataTransferObjects;
-using System;
+﻿using BLL.DataTransferObjects;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BLL.Interfaces
 {
     interface ITopicService
     {
         IEnumerable<TopicDTO> GetTopics();
-
-        //Topi
-
+        IEnumerable<QuestoinDTO> GetEngQuestoins(int topicId);
+        IEnumerable<QuestoinDTO> GetUkrQuestoins(int topicId);
+        IEnumerable<AnswerDTO> Check(IEnumerable<AnswerDTO> pruposedAnswers);
     }
 }

@@ -9,6 +9,13 @@ namespace BLL.DataTransferObjects
         public int Id { get; set; }
         public string Englsh { get; set; }
         public string Ukrainian{ get; set; }
+        public int TopicId 
+        {
+            get
+            {
+                return Topic.Id;
+            }
+        }
         public TopicDTO Topic { get; set; }
         public ICollection<MistakeDTO> Mistakes { get; set; }
 
