@@ -11,7 +11,7 @@ namespace EnglishTrainer.DAL.Interfaces
         IRepository<Topic> Topics { get; }
         IRepository<User> Users { get; }
         IRepository<Mistake> Mistakes { get; }
-        IRepository<TopicResult> TopicResults { get; set; }
+        IRepository<TopicResult> TopicResults { get; }
         void Save();
     }
 }

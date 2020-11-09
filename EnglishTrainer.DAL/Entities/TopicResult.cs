@@ -11,6 +11,7 @@ namespace EnglishTrainer.DAL.Entities
         public Topic Topic { get; set; }
         public int CorrectPercentage { get; set; }
         public DateTime CompletionDate { get; set; }
+        public string Language { get; set; }
         public ICollection<Word> MistakenWords { get; set; }        
     }
 }

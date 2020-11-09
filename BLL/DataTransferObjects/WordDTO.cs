@@ -9,26 +9,17 @@ namespace BLL.DataTransferObjects
         public int Id { get; set; }
         public string Englsh { get; set; }
         public string Ukrainian{ get; set; }
-        public int TopicId 
-        {
-            get
-            {
-                return Topic.Id;
-            }
-        }
-        public TopicDTO Topic { get; set; }
-        public ICollection<MistakeDTO> Mistakes { get; set; }
+        public int TopicId { get; set; }
 
-        public WordDTO(TopicDTO topic, string english, string ukrainian)
+        public WordDTO(int id, int topicId, string english, string ukrainian)
         {
             if (english == null)
                 throw new ArgumentNullException("english");
             if (ukrainian == null)
                 throw new ArgumentNullException("ukrainian");
-            if (topic == null)
-                throw new ArgumentNullException("topic");
 
-            Topic = topic;
+            Id = id;
+            TopicId = topicId;
             Englsh = english;
             Ukrainian = ukrainian;
         }

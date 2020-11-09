@@ -10,9 +10,9 @@ namespace BLL.DataTransferObjects
         public int TopicId { get; set; }
         public int CorrectPercentage { get; set; }
         public DateTime CompletionDate { get; set; }
+        public Language Language { get; set; }
         public TopicResultDTO()
         {
-            MistakenWords = new List<WordDTO>();
         }
     }
 }

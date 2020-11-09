@@ -7,14 +7,19 @@ using System.Text;
 
 namespace EnglishTrainer.DAL.Repositories
 {
-    class EFVocabularyUnitOfWork : IVocabularyUnitOfWork
+    public class EFVocabularyUnitOfWork : IVocabularyUnitOfWork
     {
-        private VocabularyContext db;
+        private readonly VocabularyContext db;
         private WordRepository wordRepository;
         private TopicRepository topicRepository;
         private UserRepository userRepository;
         private MistakeRepository mistakeRepository;
         private TopicResultRepository topicResultRepository;
+
+        public EFVocabularyUnitOfWork(VocabularyContext vocabularyContext)
+        {
+            db = vocabularyContext;
+        }
         public IRepository<Word> Words
         {
             get
@@ -87,8 +92,8 @@ namespace EnglishTrainer.DAL.Repositories
 
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
     }
 }
-}
+

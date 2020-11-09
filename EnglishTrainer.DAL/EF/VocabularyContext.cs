@@ -26,7 +26,7 @@ namespace EnglishTrainer.DAL.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=Vocabulary; Integrated Security= SSPI");
+            optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=Vocabulary2; Integrated Security= SSPI");
         }
     }
 }

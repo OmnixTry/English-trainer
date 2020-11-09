@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BLL.Interfaces
 {
-    interface IChecker
+    public interface IChecker
     {
         /// <summary>
         /// Checks the topic of words

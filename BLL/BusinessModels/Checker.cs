@@ -8,7 +8,7 @@ using System.Text;
 
 namespace BLL.BusinessModels
 {
-    class Checker : IChecker
+    public class Checker : IChecker
     {
         /// <summary>
         /// Checks the list of answers according to the correct words
@@ -48,7 +48,9 @@ namespace BLL.BusinessModels
                     .Select(a => new AnswerDTO()
                     {
                         Id = a.Id,
-                        Answer = answer.Language == Language.English ? a.Englsh : a.Ukrainian,                        
+                        Answer = answer.Language == Language.English ? a.Englsh : a.Ukrainian,
+                        TopicId = a.TopicId,
+                        Language = answer.Language
                     }).FirstOrDefault();
 
                 return result;
