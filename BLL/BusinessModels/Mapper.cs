@@ -46,5 +46,15 @@ namespace BLL.BusinessModels
                 Language = result.Language.ToString()
             };
         }
+
+        public static Mistake MapMistake(MistakeDTO mistake)
+        {
+            return new Mistake()
+            {
+                Id = mistake.Id,
+                UserId = mistake.UserId,
+                WordId = mistake.WordId
+            };
+        }
     }
 }

@@ -35,6 +35,7 @@ namespace BLL.Services
             IEnumerable<AnswerDTO> answers = Checker.CheckTopic(pruposedAnswers, correctAnswers);
 
             //TODO: save results
+            SaveTopicResult(answers);
 
             return answers;
         }
@@ -61,6 +62,10 @@ namespace BLL.Services
         {
             if (pruposedAnswers == null)
                 throw new ArgumentNullException();
+
+            // save mistaken words
+            SaveMistakenWords(pruposedAnswers);
+
             if (pruposedAnswers.GroupBy(x => x.TopicId).Count() != 1)
                 return false;
             else if (pruposedAnswers.GroupBy(x => x.Language).Count() != 1)
@@ -77,6 +82,19 @@ namespace BLL.Services
             return true;
         }
 
+        public void SaveMistakenWords(IEnumerable<AnswerDTO> pruposedAnswers)
+        {
+            foreach (var wrongWord in pruposedAnswers.Where(a => !a.IsCorrect))
+            {
+                MistakeDTO mistake = new MistakeDTO()
+                {
+                    UserId = Database.Words.Get(wrongWord.Id).Topic.UserId,
+                    WordId = wrongWord.Id
+                };
+                Database.Mistakes.Create(Mapper.MapMistake(mistake));
+            }
+            Database.Save();
+        }
         //
         // private methods
         //

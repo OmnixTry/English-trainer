@@ -21,11 +21,12 @@ namespace AllTests
             WordRepository wordRepo = (WordRepository)unitOfWork.Words;
             TopicRepository topicRepository = (TopicRepository)unitOfWork.Topics;
 
-            /*
+            User user = new User() { NickName = "Test" };
+
             Word word1 = new Word() { EnglshTranslation = "Color", UkrainianTranslation = "Колір" };
             Word word2 = new Word() { EnglshTranslation = "House", UkrainianTranslation = "Будинок" };
             Word word3 = new Word() { EnglshTranslation = "Door", UkrainianTranslation = "Двері" };
-            Topic topic = new Topic { Name = "Starter2", Words = new List<Word>() { word1, word2, word3} };
+            Topic topic = new Topic { Name = "Starter2", Words = new List<Word>() { word1, word2, word3}, User = user };
             word1.Topic = topic;
             word2.Topic = topic;
             word3.Topic = topic;
@@ -36,7 +37,7 @@ namespace AllTests
 
             topicRepository.Create(topic);
             unitOfWork.Save();
-            */
+            
 
             foreach (Word word in wordRepo.GetAll())
             {
@@ -59,7 +60,7 @@ namespace AllTests
             var res = topicService.Check(new List<AnswerDTO>() { 
                 new AnswerDTO() { Id = 1, Answer = "Color", Language = Language.English, TopicId = 1 },
                 new AnswerDTO() { Id = 2, Answer = "House", Language = Language.English, TopicId = 1 },
-                new AnswerDTO() { Id = 3 , Answer = "Door", Language = Language.English, TopicId = 1 },
+                new AnswerDTO() { Id = 3 , Answer = "e", Language = Language.English, TopicId = 1 },
             });
 
             foreach (var item in res)
