@@ -11,7 +11,7 @@ namespace EnglishTrainer.DAL.Repositories
 {
     class MistakeRepository : IRepository<Mistake>
     {
-        private VocabularyContext db;
+        private readonly VocabularyContext db;
 
         public MistakeRepository(VocabularyContext context)
         {

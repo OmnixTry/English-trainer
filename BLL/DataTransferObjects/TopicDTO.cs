@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnglishTrainer.DAL.Entities
+namespace BLL.DataTransferObjects
 {
-    public class Topic
+    public class TopicDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime LastPlayed { get; set; }
-        public ICollection<Word> Words { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
-
-        public Topic()
-        {
-            Words = new List<Word>();
-        }
+        public UserDTO User { get; set; }
     }
 }
