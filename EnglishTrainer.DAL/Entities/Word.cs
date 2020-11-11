@@ -9,6 +9,7 @@ namespace EnglishTrainer.DAL.Entities
         public int Id { get; set; }
         public string EnglshTranslation { get; set; }
         public string UkrainianTranslation { get; set; }
+        public int TopicId { get; set; }
         public Topic Topic { get; set; }
         public ICollection<Mistake> Mistakes { get; set; }
     }

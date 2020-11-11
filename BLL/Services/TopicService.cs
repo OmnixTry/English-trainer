@@ -89,12 +89,36 @@ namespace BLL.Services
                 MistakeDTO mistake = new MistakeDTO()
                 {
                     UserId = Database.Words.Get(wrongWord.Id).Topic.UserId,
-                    WordId = wrongWord.Id
+                    WordId = wrongWord.Id,
+                    Language = wrongWord.Language
                 };
                 Database.Mistakes.Create(Mapper.MapMistake(mistake));
             }
             Database.Save();
         }
+
+        public void AddTopic(IEnumerable<WordDTO> words, string topicName, int UserId)
+        {
+            TopicDTO topic = new TopicDTO();
+            topic.Name = topicName;
+            topic.UserId = UserId;
+            //topic.Words = (ICollection<WordDTO>)words;
+
+            Database.Topics.Create(Mapper.MapTopic(topic));
+            Database.Save();
+
+            int newTopicId = Database.Topics.GetAll().Where(t => t.Name == topicName).FirstOrDefault().Id;
+            topic.Id = newTopicId;
+            foreach (var word in words)
+            {
+                word.Id = 0;
+                word.TopicId = newTopicId;
+                //word.Topic = topic;
+                Database.Words.Create(Mapper.MapWord(word));
+            }
+            Database.Save();
+        }
+
         //
         // private methods
         //
@@ -138,6 +162,7 @@ namespace BLL.Services
                 yield return Mapper.MapWordDTO(word);
             }            
         }
+
     }
 }
 

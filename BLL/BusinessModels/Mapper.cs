@@ -2,6 +2,7 @@
 using EnglishTrainer.DAL.Entities;
 using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace BLL.BusinessModels
@@ -10,7 +11,9 @@ namespace BLL.BusinessModels
     {
         public static WordDTO MapWordDTO(Word word)
         {
-            return new WordDTO(word.Id, word.Topic.Id, word.EnglshTranslation, word.UkrainianTranslation);
+            WordDTO newWord = new WordDTO(word.EnglshTranslation, word.UkrainianTranslation, word.Id, word.Topic.Id);
+            newWord.Topic = MapTopicDTO(word.Topic);
+            return newWord;
         }
 
         public static TopicDTO MapTopicDTO(Topic topic)
@@ -19,7 +22,32 @@ namespace BLL.BusinessModels
             {
                 Id = topic.Id,
                 Name = topic.Name,
+                LastPlayed = topic.LastPlayed,
+                UserId = topic.UserId,
+            };
+        }
+
+        public static Topic MapTopic(TopicDTO topic)
+        {
+
+            return new Topic()
+            {
+                Id = topic.Id,
+                Name = topic.Name,
+                UserId = topic.UserId,
                 LastPlayed = topic.LastPlayed
+            };
+        }
+
+        public static Word MapWord(WordDTO word)
+        {
+            return new Word()
+            {
+                Id = word.Id,
+                TopicId = word.TopicId,
+                EnglshTranslation = word.Englsh,
+                UkrainianTranslation = word.Ukrainian,
+ //               Topic = MapTopic(word.Topic)
             };
         }
 
@@ -53,7 +81,8 @@ namespace BLL.BusinessModels
             {
                 Id = mistake.Id,
                 UserId = mistake.UserId,
-                WordId = mistake.WordId
+                WordId = mistake.WordId,
+                Language = mistake.Language.ToString()
             };
         }
     }

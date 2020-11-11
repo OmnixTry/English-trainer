@@ -1,0 +1,24 @@
+﻿<Window x:Class=" EnglishTrainer.WPFPresentationLayer.MainWindow"
+        xmlns:menu = "clr-namespace:EnglishTrainer.WPFPresentationLayer.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EnglishTrainer.WPFPresentationLayer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="660.735" Width="800" FontSize="40"
+        WindowState="Maximized">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border>
+            <Border.Margin>10</Border.Margin>
+            <Border.Padding>30</Border.Padding>
+            <Border.BorderBrush>Black</Border.BorderBrush>
+            <Border.BorderThickness>3</Border.BorderThickness>
+            <TextBlock>English Trainer</TextBlock>
+        </Border>
+        <menu:MenuButton ButtonTitle="Check Topics" x:Name="TopicCheckButton"></menu:MenuButton>
+        <menu:MenuButton ButtonTitle="Add New Topics" x:Name="AddNewTopicButton"></menu:MenuButton>
+        <menu:MenuButton ButtonTitle="Dictonary" x:Name="DictonaryButton"></menu:MenuButton>
+        <menu:MenuButton ButtonTitle="Quit" x:Name="QuitButton"></menu:MenuButton>
+    </StackPanel>
+</Window>

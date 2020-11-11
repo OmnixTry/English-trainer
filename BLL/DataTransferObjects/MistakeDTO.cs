@@ -11,5 +11,6 @@ namespace BLL.DataTransferObjects
         public UserDTO User { get; set; }
         public int WordId { get; set; }
         public WordDTO Word { get; set; }
+        public Language Language { get; set; }
     }
 }

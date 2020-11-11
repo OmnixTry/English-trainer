@@ -20,7 +20,8 @@ namespace AllTests
 
             WordRepository wordRepo = (WordRepository)unitOfWork.Words;
             TopicRepository topicRepository = (TopicRepository)unitOfWork.Topics;
-
+            
+            /*
             User user = new User() { NickName = "Test" };
 
             Word word1 = new Word() { EnglshTranslation = "Color", UkrainianTranslation = "Колір" };
@@ -37,7 +38,7 @@ namespace AllTests
 
             topicRepository.Create(topic);
             unitOfWork.Save();
-            
+            */
 
             foreach (Word word in wordRepo.GetAll())
             {
@@ -68,7 +69,14 @@ namespace AllTests
                 Console.WriteLine("{0} {1}", item.IsCorrect, item.Answer);
             }
 
-            bool success = topicService.SaveTopicResult(res);
+            List<WordDTO> wordsToInsert = new List<WordDTO>()
+            {
+                new WordDTO("Book", "Книга"),
+                new WordDTO("Thread", "Нитка"),
+                new WordDTO("Computer", "Комп'ютер"),
+                new WordDTO("Paper", "Папір")
+            };
+            topicService.AddTopic(wordsToInsert, "starter3", 1);
         }
     }
 }

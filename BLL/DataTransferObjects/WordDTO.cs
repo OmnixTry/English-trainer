@@ -10,8 +10,9 @@ namespace BLL.DataTransferObjects
         public string Englsh { get; set; }
         public string Ukrainian{ get; set; }
         public int TopicId { get; set; }
+        public TopicDTO Topic { get; set; }
 
-        public WordDTO(int id, int topicId, string english, string ukrainian)
+        public WordDTO(string english, string ukrainian, int id = 0, int topicId = 0)
         {
             if (english == null)
                 throw new ArgumentNullException("english");

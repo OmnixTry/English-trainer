@@ -11,5 +11,6 @@ namespace EnglishTrainer.DAL.Entities
         public User User { get; set; }
         public int WordId { get; set; }
         public Word Word { get; set; }
+        public string Language { get; set; }
     }
 }

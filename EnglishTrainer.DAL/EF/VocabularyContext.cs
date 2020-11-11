@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace EnglishTrainer.DAL.EF
@@ -16,6 +17,15 @@ namespace EnglishTrainer.DAL.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasAlternateKey(u => u.NickName);
+            var cascadeFKs = modelBuilder.Model.GetEntityTypes()
+                .Select(t => t.GetForeignKeys());
+
+
+            foreach (var fk in cascadeFKs)
+                foreach (var item in fk)
+                    item.DeleteBehavior = DeleteBehavior.Restrict;
+
+            base.OnModelCreating(modelBuilder);
 
         }
 
