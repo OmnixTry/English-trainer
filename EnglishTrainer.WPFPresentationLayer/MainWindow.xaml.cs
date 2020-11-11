@@ -25,7 +25,7 @@ namespace EnglishTrainer.WPFPresentationLayer
             InitializeComponent();
             TopicCheckButton.ClickAction = TopicCheckButton_Click;
             AddNewTopicButton.ClickAction = UnderConstruction;
-            DictonaryButton.ClickAction = UnderConstruction;
+            //DictonaryButton.ClickAction = UnderConstruction;
             QuitButton.ClickAction = Quit;
         }
 
