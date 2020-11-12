@@ -47,10 +47,10 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
             IEnumerable<QuestoinDTO> questoinDTOs;
             switch (language)
             {
-                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.Ukrainian:
+                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.English:
                     questoinDTOs = _topicService.GetUkrQuestoins(topicId);
                     break;
-                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.English:
+                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.Ukrainian:
                     questoinDTOs = _topicService.GetEngQuestoins(topicId);
                     break;
                 default:

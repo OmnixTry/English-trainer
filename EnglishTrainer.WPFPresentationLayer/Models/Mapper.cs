@@ -70,7 +70,8 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
                 Id = answer.Id,
                 Answer = answer.Answer,
                 Language = (EnglishTrainer.WPFPresentationLayer.Delegates.Language)answer.Language,
-                TopicId = answer.TopicId
+                TopicId = answer.TopicId,
+                IsCorrect = answer.IsCorrect                
             };
         }
 
@@ -81,7 +82,8 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
                 Id = answer.Id,
                 Answer = answer.Answer,
                 Language = (BLL.DataTransferObjects.Language)answer.Language,
-                TopicId = answer.TopicId
+                TopicId = answer.TopicId,
+                IsCorrect = answer.IsCorrect
             };
         }
 
