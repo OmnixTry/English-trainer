@@ -12,8 +12,9 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
     {
         public static WordDTO MapWordDTO(WordViewModel word)
         {
-            WordDTO newWord = new WordDTO(word.Englsh, word.Ukrainian, word.Id, word.Topic.Id);
-            newWord.Topic = MapTopicDTO(word.Topic);
+            WordDTO newWord = new WordDTO(word.Englsh, word.Ukrainian, word.Id);
+            // WordDTO newWord = new WordDTO(word.Englsh, word.Ukrainian, word.Id, word.Topic.Id);
+            //newWord.Topic = MapTopicDTO(word.Topic);
             return newWord;
         }
 

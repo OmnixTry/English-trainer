@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL.DataTransferObjects;
+using BLL.Interfaces;
+using EnglishTrainer.WPFPresentationLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +20,11 @@ namespace EnglishTrainer.WPFPresentationLayer.TopicAdding
     /// </summary>
     public partial class AddTopicWindow : Window
     {
-        public AddTopicWindow()
+        private ITopicService _topicService;
+        public AddTopicWindow(ITopicService topicService)
         {
             InitializeComponent();
+            _topicService = topicService;
             AddWord();
         }
 
@@ -38,6 +43,40 @@ namespace EnglishTrainer.WPFPresentationLayer.TopicAdding
         private void AddWordButton_Click(object sender, RoutedEventArgs e)
         {
             AddWord();
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            List<WordViewModel> words = new List<WordViewModel>();
+            if (StackOfWords.Children.Count == 0)
+            {
+                MessageBox.Show("Can't save empty topic!");
+                return;
+            }
+            if (TopicName.Text == String.Empty)
+            {
+                MessageBox.Show("Can't save nameless topic!");
+                return;
+            }
+
+            foreach (WordToAdd word in StackOfWords.Children)
+            {
+                if (word.English == String.Empty || word.Ukrainian == String.Empty)
+                {
+                    MessageBox.Show("Can't have empty fields");
+                    return;
+                }
+                WordViewModel wordViewModel = new WordViewModel(word.English, word.Ukrainian);
+                words.Add(wordViewModel);
+            }
+
+            List<WordDTO> wordDTOs = new List<WordDTO>();
+            foreach (var item in words)
+            {
+                wordDTOs.Add(Mapper.MapWordDTO(item));
+            }
+            _topicService.AddTopic(wordDTOs, TopicName.Text, 1);
+            this.Close();
         }
     }
 }

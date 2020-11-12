@@ -43,7 +43,7 @@ namespace EnglishTrainer.WPFPresentationLayer
 
         private static void AddTopicButtonClick()
         {
-            AddTopicWindow addTopicWindow = new AddTopicWindow();
+            AddTopicWindow addTopicWindow = new AddTopicWindow(new TopicService(new EFVocabularyUnitOfWork(new EnglishTrainer.DAL.EF.VocabularyContext()), new Checker()));
             addTopicWindow.ShowDialog();
         }
         private static void UnderConstruction()
