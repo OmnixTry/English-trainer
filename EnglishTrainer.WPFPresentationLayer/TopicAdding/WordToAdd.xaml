@@ -14,6 +14,6 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="EngTrtanslation" Grid.Column="0"></TextBox>
         <TextBox x:Name="UkrTrtanslation" Grid.Column="1"></TextBox>
-        <Button x:Name="Deletebutton" Grid.Column="2">Delete</Button>
+        <Button x:Name="DeleteButton" Grid.Column="2" Click="Deletebutton_Click">Delete</Button>
     </Grid>
 </UserControl>

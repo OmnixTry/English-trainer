@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishTrainer.WPFPresentationLayer.WordChecking"
         mc:Ignorable="d"
-        Title="ListOfTopics" Height="450" Width="auto" FontSize="40">
+        Title="ListOfTopics" Height="450" Width="auto" FontSize="40" WindowState="Maximized">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10"></Setter>
         </Style>
+        
         <Style TargetType="Border">
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">

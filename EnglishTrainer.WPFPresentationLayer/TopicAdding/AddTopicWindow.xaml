@@ -5,7 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishTrainer.WPFPresentationLayer.TopicAdding"
         mc:Ignorable="d"
-        Title="AddTopicWindow" Height="450" Width="800" FontSize="40">
+        Title="AddTopicWindow" Height="450" Width="800" FontSize="40" WindowState="Maximized">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -17,7 +25,7 @@
                 <StackPanel x:Name="StackOfWords">
                     
                 </StackPanel>
-                <Button x:Name="AddWordButton">Add Word</Button>
+                <Button x:Name="AddWordButton" Click="AddWordButton_Click">Add Word</Button>
             </StackPanel>
         </ScrollViewer>
 

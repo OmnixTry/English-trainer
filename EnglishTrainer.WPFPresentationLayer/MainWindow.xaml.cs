@@ -1,6 +1,7 @@
 ﻿using BLL.BusinessModels;
 using BLL.Services;
 using EnglishTrainer.DAL.Repositories;
+using EnglishTrainer.WPFPresentationLayer.TopicAdding;
 using EnglishTrainer.WPFPresentationLayer.WordChecking;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace EnglishTrainer.WPFPresentationLayer
         {
             InitializeComponent();
             TopicCheckButton.ClickAction = TopicCheckButtonClick;
-            AddNewTopicButton.ClickAction = UnderConstruction;
+            AddNewTopicButton.ClickAction = AddTopicButtonClick;
             //DictonaryButton.ClickAction = UnderConstruction;
             QuitButton.ClickAction = Quit;
         }
@@ -40,6 +41,11 @@ namespace EnglishTrainer.WPFPresentationLayer
             listOfTopics.ShowDialog();
         }
 
+        private static void AddTopicButtonClick()
+        {
+            AddTopicWindow addTopicWindow = new AddTopicWindow();
+            addTopicWindow.ShowDialog();
+        }
         private static void UnderConstruction()
         {
             MessageBox.Show("Under Construction", "Woops", MessageBoxButton.OK, MessageBoxImage.Warning);

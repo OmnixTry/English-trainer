@@ -20,6 +20,24 @@ namespace EnglishTrainer.WPFPresentationLayer.TopicAdding
         public AddTopicWindow()
         {
             InitializeComponent();
+            AddWord();
+        }
+
+        private void AddWord()
+        {
+            WordToAdd word = new WordToAdd();
+            word.DeleteButtonClick += DeleteWordButtonClicked;
+            StackOfWords.Children.Add(word);                
+        }
+
+        private void DeleteWordButtonClicked(WordToAdd word)
+        {
+            StackOfWords.Children.Remove(word);
+        }
+
+        private void AddWordButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddWord();
         }
     }
 }
