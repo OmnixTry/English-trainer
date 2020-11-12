@@ -19,23 +19,26 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
     /// </summary>
     public partial class TopicInList : UserControl
     {
-        public event TopicSelection EngToUkrCkick;
-        public event TopicSelection UkrToEngCkick;
+        public event TopicSelection TopicSelected;
 
         public int TopicId { get; set; }
-        public TopicInList(int topicID, string TopicName, int EngToUkrPercentage, int UkrToEngpercentage)
+        public TopicInList(int topicID, string topicName, int engToUkrPercentage, int ukrToEngpercentage)
         {
             InitializeComponent();
+            TopicId = topicID;
+            TopicName.Text = topicName;
+            EngToUkrScore.Text = engToUkrPercentage.ToString();
+            UkrToEngScore.Text = UkrToEngScore.ToString();
         }
 
         private void FromEnglishButton_Click(object sender, RoutedEventArgs e)
         {
-            this.EngToUkrCkick?.Invoke(TopicId, Delegates.Language.Ukrainian);
+            this.TopicSelected?.Invoke(TopicId, Delegates.Language.Ukrainian);
         }
 
         private void FromUkrainianButton_Click(object sender, RoutedEventArgs e)
         {
-            this.UkrToEngCkick?.Invoke(TopicId, Delegates.Language.Ukrainian);
+            this.TopicSelected?.Invoke(TopicId, Delegates.Language.English);
         }
     }
 }

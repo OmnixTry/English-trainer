@@ -1,5 +1,6 @@
 ﻿using BLL.DataTransferObjects;
 using EnglishTrainer.DAL.Entities;
+using EnglishTrainer.WPFPresentationLayer.Delegates;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
@@ -58,7 +59,7 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
                 TopicId = result.Id,
                 CompletionDate = result.CompletionDate,
                 CorrectPercentage = result.CorrectPercentage,
-                Language = (Language)Enum.Parse(typeof(Language), result.Language.ToString())
+                Language = (BLL.DataTransferObjects.Language)Enum.Parse(typeof(BLL.DataTransferObjects.Language), result.Language.ToString())
             };
         }
 
@@ -70,7 +71,7 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
                 TopicId = result.TopicId,
                 CorrectPercentage = result.CorrectPercentage,
                 CompletionDate = result.CompletionDate,
-                Language = (Delegates.Language)Enum.Parse(typeof(Language), result.Language.ToString())
+                Language = (Delegates.Language)Enum.Parse(typeof(Delegates.Language), result.Language.ToString())
             };
         }
 
@@ -81,7 +82,19 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
                 Id = mistake.Id,
                 UserId = mistake.UserId,
                 WordId = mistake.WordId,
-                Language = (Delegates.Language)Enum.Parse(typeof(Language), mistake.Language.ToString())
+                Language = (Delegates.Language)Enum.Parse(typeof(Delegates.Language), mistake.Language.ToString())
+            };
+        }
+
+        public static QuestoinViewModel mapQuestion(QuestoinDTO question)
+        {
+            return new QuestoinViewModel()
+            {
+                Id = question.Id,
+                Language = (EnglishTrainer.WPFPresentationLayer.Delegates.Language)question.Language,
+                Queston = question.Queston,
+                TopicId = question.TopicId,
+                TranslateIntoLanguage = (Delegates.Language)question.TranslateIntoLanguage
             };
         }
     }

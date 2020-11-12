@@ -1,4 +1,6 @@
-﻿using BLL.Interfaces;
+﻿using BLL.DataTransferObjects;
+using BLL.Interfaces;
+using EnglishTrainer.WPFPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +30,41 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
 
         private void LoadTopics()
         {
+            IEnumerable<TopicDTO> topicDTOs = _topicService.GetTopics();
+            List<TopicViewModel> topics = new List<TopicViewModel>();
+
+            foreach (var topic in topicDTOs)
+            {
+                TopicViewModel topicViewModel = Mapper.MapTopic(topic);
+                TopicInList topicInList = new TopicInList(topicViewModel.Id, topicViewModel.Name, 0, 0);
+                topicInList.TopicSelected += TopicPlayButtonClick;
+                Topics.Children.Add(topicInList);
+            }
+        }
+
+        void TopicPlayButtonClick(int topicId, EnglishTrainer.WPFPresentationLayer.Delegates.Language language)
+        {
+            IEnumerable<QuestoinDTO> questoinDTOs;
+            switch (language)
+            {
+                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.Ukrainian:
+                    questoinDTOs = _topicService.GetUkrQuestoins(topicId);
+                    break;
+                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.English:
+                    questoinDTOs = _topicService.GetEngQuestoins(topicId);
+                    break;
+                default:
+                    throw new InvalidOperationException("No such language available");
+            }
+            List<QuestoinViewModel> questoinViewModels = new List<QuestoinViewModel>();
+            foreach (var question in questoinDTOs)
+            {
+                questoinViewModels.Add(Mapper.mapQuestion(question));
+            }
+
+            TopicWindow topicWindow = new TopicWindow(questoinViewModels);
+            topicWindow.Show();
+
             
         }
     }

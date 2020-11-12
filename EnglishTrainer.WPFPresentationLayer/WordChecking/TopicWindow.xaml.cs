@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EnglishTrainer.WPFPresentationLayer.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,16 +22,17 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
         //private ITopic topic { get; set; }
         private object topic { get; set; }
 
-        public TopicWindow(object wordTopic)
+        public TopicWindow(IEnumerable<QuestoinViewModel> topic)
         {
-            /*
             InitializeComponent();
-            topic = wordTopic;
+            StackOfWords.Children.Add(new TextBlock() { Text = topic.First().Queston });
+            
+            /*topic = wordTopic;
             foreach (IWord word in wordTopic.Words)
             {
                 StackOfWords.Children.Add(new DisplayWord(word));
-            }
-            */
+            }*/
+            
         }
 
         private void CheckButton_Click(object sender, RoutedEventArgs e)

@@ -119,6 +119,9 @@ namespace BLL.Services
             Database.Save();
         }
 
+        //TODO GEtting results
+
+
         //
         // private methods
         //
