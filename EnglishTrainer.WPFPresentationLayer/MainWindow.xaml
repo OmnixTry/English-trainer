@@ -18,7 +18,6 @@
         </Border>
         <menu:MenuButton ButtonTitle="Check Topics" x:Name="TopicCheckButton"></menu:MenuButton>
         <menu:MenuButton ButtonTitle="Add New Topics" x:Name="AddNewTopicButton"></menu:MenuButton>
-        <menu:MenuButton ButtonTitle="Dictonary" x:Name="DictonaryButton"></menu:MenuButton>
         <menu:MenuButton ButtonTitle="Quit" x:Name="QuitButton"></menu:MenuButton>
     </StackPanel>
 </Window>
