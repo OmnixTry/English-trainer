@@ -3,6 +3,7 @@ using BLL.Interfaces;
 using EnglishTrainer.WPFPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,10 +34,30 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
             IEnumerable<TopicDTO> topicDTOs = _topicService.GetTopics();
             List<TopicViewModel> topics = new List<TopicViewModel>();
 
-            foreach (var topic in topicDTOs)
+            foreach (var item in topicDTOs)
+                topics.Add(Mapper.MapTopic(item));
+
+            foreach (var topic in topics)
             {
-                TopicViewModel topicViewModel = Mapper.MapTopic(topic);
-                TopicInList topicInList = new TopicInList(topicViewModel.Id, topicViewModel.Name, 0, 0);
+                IEnumerable<TopicResultDTO> topicResultDTOs = _topicService.GetTopicResults(topic.Id);
+                List<TopicResultViewModel> topicResultViewModels = new List<TopicResultViewModel>();
+                foreach (var result in topicResultDTOs)
+                {
+                    topicResultViewModels.Add(Mapper.MapTopicResult(result));
+                }
+
+                int? engRes = topicResultViewModels
+                    .Where(r => r.Language == Delegates.Language.Ukrainian)
+                    .OrderByDescending(r => r.CompletionDate)
+                    .FirstOrDefault()
+                    ?.CorrectPercentage;
+                int? ukrRes = topicResultViewModels
+                    .Where(r => r.Language == Delegates.Language.English)
+                    .OrderByDescending(r => r.CompletionDate)
+                    .FirstOrDefault()
+                    ?.CorrectPercentage;
+
+                TopicInList topicInList = new TopicInList(topic.Id, topic.Name, engRes == null ? 0 : (int)engRes, ukrRes == null ? 0 : (int)ukrRes);
                 topicInList.TopicSelected += TopicPlayButtonClick;
                 Topics.Children.Add(topicInList);
             }
@@ -47,10 +68,10 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
             IEnumerable<QuestoinDTO> questoinDTOs;
             switch (language)
             {
-                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.English:
+                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.Ukrainian:
                     questoinDTOs = _topicService.GetUkrQuestoins(topicId);
                     break;
-                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.Ukrainian:
+                case EnglishTrainer.WPFPresentationLayer.Delegates.Language.English:
                     questoinDTOs = _topicService.GetEngQuestoins(topicId);
                     break;
                 default:

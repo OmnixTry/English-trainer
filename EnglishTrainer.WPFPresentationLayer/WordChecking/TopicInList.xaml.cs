@@ -28,17 +28,17 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
             TopicId = topicID;
             TopicName.Text = topicName;
             EngToUkrScore.Text = engToUkrPercentage.ToString();
-            UkrToEngScore.Text = UkrToEngScore.ToString();
+            UkrToEngScore.Text = ukrToEngpercentage.ToString();
         }
 
         private void FromEnglishButton_Click(object sender, RoutedEventArgs e)
         {
-            this.TopicSelected?.Invoke(TopicId, Delegates.Language.Ukrainian);
+            this.TopicSelected?.Invoke(TopicId, Delegates.Language.English);
         }
 
         private void FromUkrainianButton_Click(object sender, RoutedEventArgs e)
         {
-            this.TopicSelected?.Invoke(TopicId, Delegates.Language.English);
+            this.TopicSelected?.Invoke(TopicId, Delegates.Language.Ukrainian);
         }
     }
 }

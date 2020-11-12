@@ -14,6 +14,7 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -23,9 +24,11 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" x:Name="StackOfWords">
+        <ScrollViewer Grid.Row="0">
+            <StackPanel x:Name="StackOfWords">
 
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer>        
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

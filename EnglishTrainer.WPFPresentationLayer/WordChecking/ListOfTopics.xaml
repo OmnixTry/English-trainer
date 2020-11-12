@@ -5,9 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishTrainer.WPFPresentationLayer.WordChecking"
         mc:Ignorable="d"
-        Title="ListOfTopics" Height="450" Width="800">
-    <StackPanel x:Name="Topics">
-        
-    </StackPanel>    
+        Title="ListOfTopics" Height="450" Width="auto" FontSize="40">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"></Setter>
+        </Style>
+        <Style TargetType="Border">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" 
+                    Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <ScrollViewer>
+        <StackPanel x:Name="Topics">
+
+        </StackPanel>
+    </ScrollViewer>   
 
 </Window>
