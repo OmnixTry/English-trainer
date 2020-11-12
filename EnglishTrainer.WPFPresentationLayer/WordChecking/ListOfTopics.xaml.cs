@@ -56,13 +56,13 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
                 default:
                     throw new InvalidOperationException("No such language available");
             }
-            List<QuestoinViewModel> questoinViewModels = new List<QuestoinViewModel>();
+            List<QuestionViewModel> questoinViewModels = new List<QuestionViewModel>();
             foreach (var question in questoinDTOs)
             {
                 questoinViewModels.Add(Mapper.mapQuestion(question));
             }
 
-            TopicWindow topicWindow = new TopicWindow(questoinViewModels);
+            TopicWindow topicWindow = new TopicWindow(questoinViewModels, _topicService);
             topicWindow.Show();
 
             

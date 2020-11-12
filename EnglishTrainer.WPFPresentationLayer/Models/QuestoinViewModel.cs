@@ -5,11 +5,11 @@ using System.Text;
 
 namespace EnglishTrainer.WPFPresentationLayer.Models
 {
-    public class QuestoinViewModel
+    public class QuestionViewModel
     {
         public int Id { get; set; }
         public int TopicId { get; set; }
-        public string Queston { get; set; }
+        public string Question { get; set; }
         public Language Language { get; set; }
         public Language TranslateIntoLanguage { get; set; }
     }

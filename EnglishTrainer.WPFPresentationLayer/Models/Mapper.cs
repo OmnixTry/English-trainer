@@ -51,6 +51,40 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
             };
         }
 
+        internal static QuestoinDTO MapQuestionDTO(QuestionViewModel question)
+        {
+            return new QuestoinDTO()
+            {
+                Id = question.Id,
+                Language = (BLL.DataTransferObjects.Language)question.Language,
+                Queston = question.Question,
+                TopicId = question.TopicId,
+                TranslateIntoLanguage = (BLL.DataTransferObjects.Language)question.TranslateIntoLanguage
+            };
+        }
+
+        internal static AnswerViewModel MapAnswer(AnswerDTO answer)
+        {
+            return new AnswerViewModel()
+            {
+                Id = answer.Id,
+                Answer = answer.Answer,
+                Language = (EnglishTrainer.WPFPresentationLayer.Delegates.Language)answer.Language,
+                TopicId = answer.TopicId
+            };
+        }
+
+        internal static AnswerDTO MapAnswerDTO(AnswerViewModel answer)
+        {
+            return new AnswerDTO()
+            {
+                Id = answer.Id,
+                Answer = answer.Answer,
+                Language = (BLL.DataTransferObjects.Language)answer.Language,
+                TopicId = answer.TopicId
+            };
+        }
+
         public static TopicResultDTO MapTopicResultDTO(TopicResultViewModel result)
         {
             return new TopicResultDTO()
@@ -86,13 +120,13 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
             };
         }
 
-        public static QuestoinViewModel mapQuestion(QuestoinDTO question)
+        public static QuestionViewModel mapQuestion(QuestoinDTO question)
         {
-            return new QuestoinViewModel()
+            return new QuestionViewModel()
             {
                 Id = question.Id,
                 Language = (EnglishTrainer.WPFPresentationLayer.Delegates.Language)question.Language,
-                Queston = question.Queston,
+                Question = question.Queston,
                 TopicId = question.TopicId,
                 TranslateIntoLanguage = (Delegates.Language)question.TranslateIntoLanguage
             };

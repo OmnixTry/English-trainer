@@ -1,4 +1,7 @@
-﻿using EnglishTrainer.WPFPresentationLayer.Models;
+﻿using BLL.DataTransferObjects;
+using BLL.Interfaces;
+using EnglishTrainer.DAL.Interfaces;
+using EnglishTrainer.WPFPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,43 +23,63 @@ namespace EnglishTrainer.WPFPresentationLayer.WordChecking
     public partial class TopicWindow : Window
     {
         //private ITopic topic { get; set; }
-        private object topic { get; set; }
+        private ITopicService _topicService;
 
-        public TopicWindow(IEnumerable<QuestoinViewModel> topic)
+        public TopicWindow(IEnumerable<QuestionViewModel> topic, ITopicService topicService)
         {
             InitializeComponent();
-            StackOfWords.Children.Add(new TextBlock() { Text = topic.First().Queston });
+            _topicService = topicService;
             
-            /*topic = wordTopic;
-            foreach (IWord word in wordTopic.Words)
+            foreach (QuestionViewModel questoin in topic)
             {
-                StackOfWords.Children.Add(new DisplayWord(word));
-            }*/
+                StackOfWords.Children.Add(new DisplayWord(questoin));
+            }
             
         }
 
         private void CheckButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            List<AnswerDTO> answers = new List<AnswerDTO>();
             foreach (DisplayWord word in StackOfWords.Children)
             {
-                word.Check();
+                AnswerViewModel answer = new AnswerViewModel()
+                {
+                    Id = word.Question.Id,
+                    Language = word.Question.TranslateIntoLanguage,
+                    TopicId = word.Question.TopicId,
+                    Answer = word.TranslationBox.Text
+                };
+                answers.Add(Mapper.MapAnswerDTO(answer));
             }
-            float topicProgress = topic.Check();
-            ResultProgress.SetProgress((int)(topicProgress * 100));
+
+            IEnumerable<AnswerDTO> correctAnswerDTOs = _topicService.Check(answers);
+            List<AnswerViewModel> correctAnswers = new List<AnswerViewModel>();
+            foreach (AnswerDTO answer in correctAnswerDTOs)
+            {
+                correctAnswers.Add(Mapper.MapAnswer(answer));
+            }
+
+            foreach (DisplayWord word in StackOfWords.Children)
+            {
+                AnswerViewModel answer = correctAnswers.Where(a => a.Id == word.Question.Id).FirstOrDefault();
+                if (answer != null)
+                    word.DisplayImage(answer.IsCorrect);
+                else
+                    word.DisplayImage(false);
+                word.DisableTranslation();                
+            }
+            ResultProgress.SetProgress(correctAnswers.Where(a => a.IsCorrect).Count() * 100 / correctAnswers.Count());
             ResultProgress.Visibility = Visibility.Visible;
-            */
         }
 
         private void ClearButon_Click(object sender, RoutedEventArgs e)
         {
-            /*
             foreach (DisplayWord word in StackOfWords.Children)
             {
-                word.Clear();
+                word.EneableTranslation();
+                word.ClearTranslation();
             }
             ResultProgress.Visibility = Visibility.Collapsed;
-            */
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
