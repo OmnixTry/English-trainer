@@ -166,6 +166,15 @@ namespace BLL.Services
             }            
         }
 
+        public IEnumerable<TopicResultDTO> GetTopicResults(int topicId)
+        {
+            IEnumerable<TopicResult> topicResults = Database.TopicResults.Find(r => r.TopicId == topicId).ToList();
+            List<TopicResultDTO> topicResultDTOs = new List<TopicResultDTO>();
+            foreach (var result in topicResults)
+                topicResultDTOs.Add(Mapper.MapTopicResultDTO(result));
+
+            return topicResultDTOs;
+        }
     }
 }
 
