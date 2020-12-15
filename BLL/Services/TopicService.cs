@@ -97,7 +97,7 @@ namespace BLL.Services
             Database.Save();
         }
 
-        public void AddTopic(IEnumerable<WordDTO> words, string topicName, int UserId)
+        public TopicDTO AddTopic(IEnumerable<WordDTO> words, string topicName, int UserId)
         {
             TopicDTO topic = new TopicDTO();
             topic.Name = topicName;
@@ -117,6 +117,17 @@ namespace BLL.Services
                 Database.Words.Create(Mapper.MapWord(word));
             }
             Database.Save();
+            return topic;
+        }
+
+        public IEnumerable<TopicResultDTO> GetTopicResults(int topicId)
+        {
+            IEnumerable<TopicResult> topicResults = Database.TopicResults.Find(r => r.TopicId == topicId).ToList();
+            List<TopicResultDTO> topicResultDTOs = new List<TopicResultDTO>();
+            foreach (var result in topicResults)
+                topicResultDTOs.Add(Mapper.MapTopicResultDTO(result));
+
+            return topicResultDTOs;
         }
 
         //TODO GEtting results
@@ -166,15 +177,7 @@ namespace BLL.Services
             }            
         }
 
-        public IEnumerable<TopicResultDTO> GetTopicResults(int topicId)
-        {
-            IEnumerable<TopicResult> topicResults = Database.TopicResults.Find(r => r.TopicId == topicId).ToList();
-            List<TopicResultDTO> topicResultDTOs = new List<TopicResultDTO>();
-            foreach (var result in topicResults)
-                topicResultDTOs.Add(Mapper.MapTopicResultDTO(result));
-
-            return topicResultDTOs;
-        }
+        
     }
 }
 

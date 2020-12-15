@@ -56,7 +56,7 @@ namespace BLL.BusinessModels
             return new TopicResultDTO()
             {
                 Id = result.Id,
-                TopicId = result.Id,
+                TopicId = result.TopicId,
                 CompletionDate = result.CompletionDate,
                 CorrectPercentage = result.CorrectPercentage,
                 Language = (Language)Enum.Parse(typeof(Language), result.Language)

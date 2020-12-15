@@ -2,8 +2,10 @@
 using EnglishTrainer.DAL.Entities;
 using EnglishTrainer.DAL.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace EnglishTrainer.DAL.Repositories
 {
@@ -16,9 +18,25 @@ namespace EnglishTrainer.DAL.Repositories
         private MistakeRepository mistakeRepository;
         private TopicResultRepository topicResultRepository;
 
-        public EFVocabularyUnitOfWork(VocabularyContext vocabularyContext)
+        public EFVocabularyUnitOfWork(string connectionString)
         {
-            db = vocabularyContext;
+            /*
+            var builder = new ConfigurationBuilder();
+            
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            
+            builder.AddJsonFile("appsettings.json");
+            
+            var config = builder.Build();
+            
+            string connectionString = config.GetConnectionString(connectionStringName);
+            */
+            var optionsBuilder = new DbContextOptionsBuilder<VocabularyContext>();
+            var options = optionsBuilder
+                .UseSqlServer(connectionString)
+                .Options;
+
+            db = new VocabularyContext(options);
         }
         public IRepository<Word> Words
         {

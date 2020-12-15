@@ -35,7 +35,7 @@ namespace EnglishTrainer.DAL.Repositories
 
         public Word Get(int id)
         {
-            return db.Words.Find(id);
+            return db.Words.Include(w => w.Topic).Where(w => w.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Word> GetAll()

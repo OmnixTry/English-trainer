@@ -54,6 +54,7 @@ namespace EnglishTrainer.WPFPresentationLayer.Models
 
         internal static QuestoinDTO MapQuestionDTO(QuestionViewModel question)
         {
+            
             return new QuestoinDTO()
             {
                 Id = question.Id,

@@ -29,11 +29,16 @@ namespace EnglishTrainer.DAL.EF
 
         }
 
-        public VocabularyContext()
+        public VocabularyContext(DbContextOptions<VocabularyContext> options)
+            : base(options)
         {
             Database.EnsureCreated();
         }
 
+        public VocabularyContext()
+        {
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=Vocabulary2; Integrated Security= SSPI");

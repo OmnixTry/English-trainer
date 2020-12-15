@@ -10,7 +10,7 @@ namespace BLL.Interfaces
         IEnumerable<QuestoinDTO> GetUkrQuestoins(int topicId);
         IEnumerable<AnswerDTO> Check(IEnumerable<AnswerDTO> pruposedAnswers);
         bool SaveTopicResult(IEnumerable<AnswerDTO> pruposedAnswers);
-        void AddTopic(IEnumerable<WordDTO> words, string topicName, int UserId);
+        TopicDTO AddTopic(IEnumerable<WordDTO> words, string topicName, int UserId);
         IEnumerable<TopicResultDTO> GetTopicResults(int topicId);
     }
 }

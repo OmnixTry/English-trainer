@@ -9,6 +9,9 @@ using BLL.DataTransferObjects;
 using BLL.BusinessModels;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
+using Ninject;
+using BLL.Infrastructure;
+using EnglishTrainer.WPFPresentationLayer.Infrastructure;
 
 namespace AllTests
 {
@@ -16,7 +19,9 @@ namespace AllTests
     {
         static void Main(string[] args)
         {
-            IVocabularyUnitOfWork unitOfWork = new EFVocabularyUnitOfWork(new EnglishTrainer.DAL.EF.VocabularyContext());
+            IKernel kernel = new StandardKernel(new DALBindings("DefaultConnection"), new BLLBindings());
+            // IVocabularyUnitOfWork unitOfWork = new EFVocabularyUnitOfWork("DefaultConnection");
+            IVocabularyUnitOfWork unitOfWork = kernel.Get<IVocabularyUnitOfWork>();
 
             WordRepository wordRepo = (WordRepository)unitOfWork.Words;
             TopicRepository topicRepository = (TopicRepository)unitOfWork.Topics;
@@ -46,7 +51,8 @@ namespace AllTests
             }
 
 
-            ITopicService topicService = new TopicService(unitOfWork, new Checker());
+            //ITopicService topicService = new TopicService(unitOfWork, new Checker());
+            ITopicService topicService = kernel.Get<ITopicService>();
 
             foreach (TopicDTO item in topicService.GetTopics())
             {

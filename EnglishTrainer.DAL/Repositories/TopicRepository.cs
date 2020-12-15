@@ -36,7 +36,7 @@ namespace EnglishTrainer.DAL.Repositories
 
         public Topic Get(int id)
         {
-            return db.Topics.Find(id);
+            return db.Topics.Include(t => t.Words).Where(t => t.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Topic> GetAll()

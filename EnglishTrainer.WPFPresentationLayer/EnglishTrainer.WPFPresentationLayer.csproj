@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLL\EnglishTrainer.BLL.csproj" />
+    <ProjectReference Include="..\EnglishTrainer.DAL\EnglishTrainer.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

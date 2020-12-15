@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ninject" Version="4.0.0-beta-0134" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EnglishTrainer.DAL\EnglishTrainer.DAL.csproj" />
   </ItemGroup>
 

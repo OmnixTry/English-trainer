@@ -1,8 +1,11 @@
 ﻿using BLL.BusinessModels;
+using BLL.Interfaces;
 using BLL.Services;
 using EnglishTrainer.DAL.Repositories;
+using EnglishTrainer.WPFPresentationLayer.Infrastructure;
 using EnglishTrainer.WPFPresentationLayer.TopicAdding;
 using EnglishTrainer.WPFPresentationLayer.WordChecking;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,13 +40,17 @@ namespace EnglishTrainer.WPFPresentationLayer
         private static void TopicCheckButtonClick()
         {
             //TODO Dependency injection
-            ListOfTopics listOfTopics = new ListOfTopics(new TopicService(new EFVocabularyUnitOfWork(new EnglishTrainer.DAL.EF.VocabularyContext()), new Checker()));
+            //ListOfTopics listOfTopics = new ListOfTopics(new TopicService(new EFVocabularyUnitOfWork(new EnglishTrainer.DAL.EF.VocabularyContext()), new Checker()));
+            IKernel kernel = new StandardKernel(new BLLBindings());
+            ListOfTopics listOfTopics = new ListOfTopics(kernel.Get<ITopicService>());
             listOfTopics.ShowDialog();
         }
 
         private static void AddTopicButtonClick()
         {
-            AddTopicWindow addTopicWindow = new AddTopicWindow(new TopicService(new EFVocabularyUnitOfWork(new EnglishTrainer.DAL.EF.VocabularyContext()), new Checker()));
+            IKernel kernel = new StandardKernel(new BLLBindings());
+            //AddTopicWindow addTopicWindow = new AddTopicWindow(new TopicService(new EFVocabularyUnitOfWork(new EnglishTrainer.DAL.EF.VocabularyContext()), new Checker()));
+            AddTopicWindow addTopicWindow = new AddTopicWindow(kernel.Get<ITopicService>());
             addTopicWindow.ShowDialog();
         }
         private static void UnderConstruction()
