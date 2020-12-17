@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img\right.png" />
+    <None Remove="img\wrong.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Ninject" Version="4.0.0-beta-0134" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\EnglishTrainer.BLL.csproj" />
+    <ProjectReference Include="..\EnglishTrainer.DAL\EnglishTrainer.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\wrong.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="TopicAdding\AddTopicWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="TopicAdding\WordToAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WordChecking\DisplayWord.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WordChecking\ListOfTopics.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WordChecking\TopicInList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WordChecking\TopicProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WordChecking\TopicWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="TopicAdding\AddTopicWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="TopicAdding\WordToAdd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WordChecking\DisplayWord.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WordChecking\ListOfTopics.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WordChecking\TopicInList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WordChecking\TopicProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WordChecking\TopicWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

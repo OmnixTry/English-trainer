@@ -51,6 +51,13 @@ namespace TrainerAPI.Controllers
             return Created($"/api/topic/{topicModel.Id}", topicModel);
         }
 
+        [HttpPost]
+        public IList<AnswerModel> Check([FromBody] IEnumerable<AnswerModel> words)
+        {
+            IEnumerable<AnswerDTO> checkedAnswers = _topicService.Check(Mapper.MapList(words));
+            return Mapper.MapList(checkedAnswers);
+        }
+
         [Route("{id}/questions/")]
         [HttpGet]
         // topic/id/questionid

@@ -14,22 +14,16 @@ namespace TrainerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AnswerController : ControllerBase
+    public class ResultController : ControllerBase
     {
         static ITopicService _topicService = new StandardKernel(new BLLBindings()).Get<ITopicService>();
 
-        [HttpPost]
-        public IList<AnswerModel> Check([FromBody] IEnumerable<AnswerModel> words)
-        {
-            IEnumerable<AnswerDTO> checkedAnswers = _topicService.Check(Mapper.MapList(words));
-            return Mapper.MapList(checkedAnswers);
-        }
-
-
         [HttpGet]
-        public AnswerModel Get()
+        [Route("{id}")]
+        public IList<TopicResultModel> Get(int id)
         {
-            return new AnswerModel();
+            IEnumerable<TopicResultDTO> dtos = _topicService.GetTopicResults(id);
+            return Mapper.MapList(dtos);
         }
     }
 }

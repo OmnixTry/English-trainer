@@ -25,7 +25,6 @@ namespace TrainerAPI.Controllers
             return Mapper.MapList(checkedAnswers);
         }
 
-
         [HttpGet]
         public AnswerModel Get()
         {
